@@ -1,25 +1,32 @@
 # v0 System Instructions
 
 ## Workflow
-**Read markdown files from GitHub repo first:**
-- `vision.md` - Goals and core feature
-- `app-flow-and-roles.md` - User journeys  
-- `pages.md` - Route specifications
-- `project-design.md` - Design system
-- `backend.md` - Supabase data model
+**ALWAYS read markdown files from /docs folder FIRST:**
+- `/docs/vision.md` - Goals and core feature
+- `/docs/app-flow-and-roles.md` - User journeys  
+- `/docs/pages.md` - Route specifications
+- `/docs/project-design.md` - Design system
+- `/docs/backend.md` - Supabase data model
 
-**Before coding:** Summarize and confirm understanding.
+**Before ANY code:** Summarize and confirm understanding.
 
-## Validation
-**Match every decision to markdown files:**
+## Validation (ENFORCE STRICTLY)
+**Every code change MUST match /docs markdown files:**
 - Colors: EXACT hex from project-design.md
 - Routes: ONLY what's in pages.md
 - Data: Exact tables/fields from backend.md
 - Flows: From app-flow-and-roles.md
 
+**When user requests ANYTHING not in docs:**
+STOP. Ask: "This isn't in /docs/[file].md. Should I:
+1. Keep current spec and skip this?
+2. Update /docs/[file].md first to include it?"
+
+Do NOT proceed until clarified.
+
 **STOP and ask when:**
 - Specs missing or conflicting
-- User requests features not in pages.md
+- User requests deviate from pages.md
 - Data fields needed but not documented
 - Design details ambiguous
 
@@ -53,11 +60,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 - Admin dashboards
 - Search/filters/analytics
 
-**User requests unlisted features?** Ask to update pages.md first.
-
 ## Rules
-1. Documentation = source of truth
-2. Ask when unclear
+1. Documentation in /docs = source of truth (CHECK EVERY TIME)
+2. User deviates from docs = STOP and ask to clarify
 3. Server Components first
 4. No API routes
 5. Exact design from project-design.md
